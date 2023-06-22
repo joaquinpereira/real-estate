@@ -20,6 +20,13 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'profile_picture' => 'https://loremflickr.com/640/480/person/all',
+            'mobile_phone' => fake()->phoneNumber(),
+            'facebook_url' => fake()->url(),
+            'twitter_url' => fake()->url(),
+            'instagram_url' => fake()->url(),
+            'linkedin_url' => fake()->url(),
+            'youtube_url' => fake()->url(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
