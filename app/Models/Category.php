@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['title', 'slug'];
 
     public function getRouteKeyName(){
         return 'slug';
@@ -20,8 +20,8 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
-    public function setNameAttribute($name){
-        $this->attributes['name'] = $name;
-        $this->attributes['slug'] = Str::slug($name);
+    public function setTitleAttribute($title){
+        $this->attributes['title'] = $title;
+        $this->attributes['slug'] = Str::slug($title);
     }
 }

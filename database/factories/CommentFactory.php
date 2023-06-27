@@ -20,18 +20,8 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => function(){
-                return User::factory()->create();
-            },
-            'post_id' => function(){
-                return Post::factory()->create();
-            },
-            'parent_id' => function(){
-                if(fake()->boolean()){
-                    return Comment::factory()->create();
-                }
-                return null;
-            },
+            'user_id' => User::factory(),
+            'post_id' => Post::factory(),
             'content'=> fake()->sentence(6 , true),
             'published'=> fake()->boolean(),
         ];

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('property_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 2048);
             $table->timestamps();
         });
     }

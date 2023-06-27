@@ -19,19 +19,19 @@ return new class extends Migration
             $table->foreignId('city_id')->references('id')->on('cities')->constrained();
             $table->foreignId('property_type_id')->references('id')->on('property_types')->constrained();
             $table->foreignId('property_statuses_id')->references('id')->on('property_statuses')->constrained();
-            $table->string('title');
-            $table->string('slug');
+            $table->string('title', 2048);
+            $table->string('slug', 2048);
             $table->text('address');
             $table->text('location')->nullable();
             $table->text('description');
-            $table->string('property_size');
+            $table->string('property_size', 2048);
             $table->decimal('price',18,4)->unsigned();
             $table->enum('status', ['Pending', 'Pause', 'Active', 'Closed'])->default('Pending');
             $table->integer('bedrooms');
             $table->integer('bathrooms');
             $table->integer('year_built');
             $table->integer('garage');
-            $table->string('garage_size');
+            $table->string('garage_size', 2048);
             $table->timestamps();
         });
     }

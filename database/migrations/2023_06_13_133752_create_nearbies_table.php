@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('nearbies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id')->references('id')->on('properties')->constrained();
-            $table->string('title');
+            $table->string('title', 2048);
             $table->text('location')->nullable();
             $table->string('type');
             $table->timestamps();

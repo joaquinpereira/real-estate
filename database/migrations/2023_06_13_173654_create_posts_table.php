@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,13 +15,20 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->constrained();
-            $table->foreignId('category_id')->references('id')->on('categories')->constrained();
-            $table->string('title');
-            $table->string('summary')->nullable();
+            $table->foreignIdFor(User::class)
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignIdFor(Category::class)
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->string('title', 2048);
+            $table->string('summary', 2048)->nullable();
             $table->text('content')->nullable();
-            $table->string('poster')->nullable();
-            $table->string('slug');
+            $table->string('poster', 2048)->nullable();
+            $table->string('slug', 2048);
+            $table->boolean('active');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

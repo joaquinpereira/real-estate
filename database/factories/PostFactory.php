@@ -20,16 +20,13 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => function(){
-                return User::factory()->create();
-            },
-            'category_id' => function(){
-                return Category::factory()->create();
-            },
+            'user_id' => User::factory(),
+            'category_id' => Category::factory(),
             'title' => fake()->sentence(6, true),
             'slug' => fake()->slug(),
             'summary' => fake()->sentence(15, true),
             'content' => fake()->paragraph(30, true),
+            'active' => fake()->boolean(),
             'poster' => 'https://picsum.photos/1080/768?random=1',
             'published_at' => function(){
                 if(fake()->boolean())

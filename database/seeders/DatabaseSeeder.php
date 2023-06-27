@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
     public function createPosts($user)
     {
         for($i=0; $i<30; $i++){
-            $this->createNewPost(random_int(1, 10));
+            $this->createNewPost(rand(1, 10));
         }
 
         for($i=0; $i<10; $i++){
@@ -71,18 +71,13 @@ class DatabaseSeeder extends Seeder
 
     public function createNewPost($user_id)
     {
-        Post::factory(1)->create([
+        Post::factory()->create([
                 'user_id' => $user_id,
                 'category_id' => random_int(1, 10),
             ])
             ->each(function($post){
                 $tags = random_int(1, 4);
                 $post->tags()->attach($tags);
-
-                Comment::factory(4)->create([
-                    'post_id' => $post->id,
-                    'user_id' => random_int(1, 10)
-                ]);
         });
     }
 
@@ -90,10 +85,10 @@ class DatabaseSeeder extends Seeder
     {
         Property::factory(1)->create([
             'user_id' => $user_id,
-            'category_id' => random_int(1, 10),
-            'city_id' => random_int(1, 10),
-            'property_type_id' => random_int(1, 10),
-            'property_statuses_id' => random_int(1, 10),
+            'category_id' => rand(1, 10),
+            'city_id' => rand(1, 10),
+            'property_type_id' => rand(1, 10),
+            'property_statuses_id' => rand(1, 10),
         ])->each(function($property) use ($user_id){
             $n = rand(1,3);
             for($i=0; $i < $n; $i++){
