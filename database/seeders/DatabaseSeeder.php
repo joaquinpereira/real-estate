@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
     public function createProperties($user)
     {
         for($i=0; $i<30; $i++){
-            $this->createNewProperty(random_int(1, 10));
+            $this->createNewProperty(rand(1, 10));
         }
 
         for($i=0; $i<10; $i++){
@@ -88,15 +88,18 @@ class DatabaseSeeder extends Seeder
 
     public function createNewProperty($user_id)
     {
-        Property::factory()->create([
+        Property::factory(1)->create([
             'user_id' => $user_id,
             'category_id' => random_int(1, 10),
             'city_id' => random_int(1, 10),
             'property_type_id' => random_int(1, 10),
             'property_statuses_id' => random_int(1, 10),
         ])->each(function($property) use ($user_id){
-            $features = Feature::all()->random(rand(5,15))->pluck('id');
-            $property->features()->attach($features);
+            $n = rand(1,3);
+            for($i=0; $i < $n; $i++){
+                $features = rand(1, 30);
+                $property->features()->attach($features);
+            }
 
             Nearby::factory(4)->create([
                 'property_id' => $property->id
