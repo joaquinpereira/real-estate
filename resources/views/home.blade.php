@@ -16,7 +16,7 @@
 
                     {{ __('You are logged in!') }}
                     <br>
-                    @livewire('tall-crud-generator')
+
                 </div>
             </div>
         </div>
