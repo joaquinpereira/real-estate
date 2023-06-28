@@ -28,6 +28,8 @@
     <link href="{{asset('assets/real_estate/css/stylesbd04.css?8918068d71def746395d')}}" rel="stylesheet">
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
+    @livewireStyles
 </head>
 
 <body>
@@ -51,5 +53,7 @@
     <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
     <!-- END SCROLL TO TOP -->
     <script src="{{asset('assets/real_estate/js/index.bundlebd04.js?8918068d71def746395d')}}"></script>
+
+    @livewireScripts
 </body>
 </html>

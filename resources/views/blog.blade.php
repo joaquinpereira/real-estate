@@ -10,9 +10,7 @@
     <div class="container">
         <div class="row">
 
-            @include('layouts.partials.blog.posts')
-
-            @include('layouts.partials.blog.side_bar')
+            @livewire('posts')
 
         </div>
     </div>
