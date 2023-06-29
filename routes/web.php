@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Posts\ShowPost;
 use App\Http\Livewire\Posts\PostsCategory;
+use App\Http\Livewire\Posts\PostsTag;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,7 @@ Route::get('/blog', function () {
 Route::get('/blog/{post}', ShowPost::class)->name('post.show');
 
 Route::get('/blog/category/{category}', PostsCategory::class)->name('posts.category');
+Route::get('/blog/tag/{tag}', PostsTag::class)->name('posts.tag');
 
 
 Route::get('/dashboard', function () {

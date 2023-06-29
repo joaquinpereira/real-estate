@@ -51,7 +51,7 @@
             <ul class="list-inline">
                 @forelse ($post->tags as $tag)
                     <li class="list-inline-item">
-                        <a href="#">
+                        <a href="{{ route('posts.tag', $tag)}}">
                             #{{$tag->title}}
                         </a>
                     </li>
