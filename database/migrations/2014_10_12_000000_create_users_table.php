@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('about',512);
             $table->string('profile_picture')->nullable();
             $table->string('mobile_phone')->nullable();
             $table->string('facebook_url')->nullable();

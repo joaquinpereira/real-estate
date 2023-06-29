@@ -8,7 +8,7 @@
                     <div class="card__image">
                         <div class="card__image-header h-250">
                             <img src="{{ $post->poster }}" alt="" class="img-fluid w100 img-transition">
-                            <div class="info"> event</div>
+                            {{-- <div class="info"> event</div> --}}
                         </div>
                         <div class="card__image-body">
                             <span class="badge badge-secondary p-1 text-capitalize mb-3">
@@ -34,7 +34,7 @@
                             </ul>
                             <ul class="list-inline my-auto ml-auto">
                                 <li class="list-inline-item">
-                                    <a href="#" class="btn btn-sm btn-primary ">
+                                    <a href="{{ route('post.show', $post) }}" class="btn btn-sm btn-primary ">
                                         <small class="text-white ">read more <i class="fa fa-angle-right ml-1"></i></small>
                                     </a>
                                 </li>

@@ -20,6 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'about' => fake()->paragraph(),
             'profile_picture' => 'https://loremflickr.com/640/480/person/all',
             'mobile_phone' => fake()->phoneNumber(),
             'facebook_url' => fake()->url(),

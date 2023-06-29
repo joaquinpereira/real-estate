@@ -1,6 +1,7 @@
 <!-- WIDGET BLOG -->
 <div class="col-lg-4">
     <div class="sticky-top">
+        @if ($showSearch)
         {{-- Search btn --}}
         <aside>
             <div class="widget__sidebar mt-0">
@@ -20,6 +21,7 @@
 
             </div>
         </aside>
+        @endif
         {{-- Categories --}}
         <aside>
             <div class="widget__sidebar">

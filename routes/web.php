@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\ShowPost;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Route::get('/', function () {
 Route::get('/blog', function () {
     return view('blog');
 });
+
+Route::get('/post/{post}', ShowPost::class)->name('post.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
