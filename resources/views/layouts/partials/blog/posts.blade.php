@@ -6,7 +6,7 @@
                 <div class="blog__grid mt-0">
                     <!-- BLOG  -->
                     <div class="card__image">
-                        <div class="card__image-header h-250">
+                        <div class="card__image-header h-250" wire:click="showPost('{{$post->slug}}')">
                             <img src="{{ $post->poster }}" alt="" class="img-fluid w100 img-transition">
                             {{-- <div class="info"> event</div> --}}
                         </div>
@@ -15,7 +15,7 @@
                                 {{ optional($post->published_at)->format('M d, Y') }}
                             </span>
                             <h6 class="text-capitalize">
-                                <a href="#">{{ $post->title }} </a>
+                                <a href="{{ route('post.show', $post) }}">{{ $post->title }} </a>
                             </h6>
                             <p class=" mb-0">
                                 {{ $post->summary }}

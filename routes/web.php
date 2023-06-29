@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Livewire\ShowPost;
+use App\Http\Livewire\Posts\ShowPost;
+use App\Http\Livewire\Posts\PostsCategory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,10 @@ Route::get('/blog', function () {
     return view('blog');
 });
 
-Route::get('/post/{post}', ShowPost::class)->name('post.show');
+Route::get('/blog/{post}', ShowPost::class)->name('post.show');
+
+Route::get('/blog/category/{category}', PostsCategory::class)->name('posts.category');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -11,7 +11,7 @@
                 <div class="widget__sidebar__body">
                     <div class="input-group">
                         <input type="text" name="search_term_string" class="form-control"
-                                placeholder="Search" wire:model="searchTerm">
+                                placeholder="Search" wire:model.debounce="searchTerm">
                         <span class="input-group-btn">
                             <button type="submit" class="btn-search btn"><i
                                     class="fa fa-search"></i></button>
@@ -32,9 +32,9 @@
                     <ul class="list-unstyled">
                         @forelse ($categories as $category)
                         <li>
-                            <a href="#" class="text-capitalize">
+                            <a href="{{ route('posts.category', $category)}}" class="text-capitalize">
                                 {{ $category->title }}
-                                <span class="badge badge-primary">{{ $category->posts->count() }}</span>
+                                <span class="badge badge-primary">{{ $category->postPublished()->count() }}</span>
                             </a>
                         </li>
                         @empty
@@ -57,8 +57,8 @@
                         <img src="{{ $recent_post->poster }}" alt="" class="img-fluid">
 
                         <div class="widget__sidebar__body-heading">
-                            <h6 class="text-capitalize">
-                                {{ Str::limit($recent_post->title, 50, '...') }}
+                            <h6 class="text-capitalize cursor-pointer">
+                                <a href="{{route('post.show',$recent_post)}}">{{ Str::limit($recent_post->title, 50, '...') }}</a>
                             </h6>
                         </div>
                         <span class="badge badge-secondary p-1 text-capitalize mb-1">

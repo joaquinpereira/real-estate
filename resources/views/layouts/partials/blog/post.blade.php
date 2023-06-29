@@ -31,7 +31,7 @@
                     <span class="text-dark text-capitalize ml-1">
                         in
                     </span>
-                    <a href="#">
+                    <a href="{{ route('posts.category', $post->category)}}">
                         {{ $post->category->title }}
                     </a>
                 </li>
