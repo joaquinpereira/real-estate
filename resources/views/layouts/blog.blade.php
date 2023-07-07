@@ -34,7 +34,7 @@
 
 <body>
     <!-- HEADER -->
-    @include('layouts.partials.index.header')
+    @include('layouts.partials.blog.header')
     <!-- END HEADER -->
 
 <div class="main">

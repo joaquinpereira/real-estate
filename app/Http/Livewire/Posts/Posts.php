@@ -27,7 +27,8 @@ class Posts extends Component
             'categories' => Category::all(),
             'recent_posts' => Post::published()->latest()->take(5)->get(),
             'tags' => Tag::all()
-        ]);
+        ])->extends('layouts.blog')
+        ->section('content');
     }
 
 }

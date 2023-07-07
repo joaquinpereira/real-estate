@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Home;
+use App\Http\Livewire\Posts\Posts;
 use App\Http\Livewire\Posts\ShowPost;
 use App\Http\Livewire\Posts\PostsCategory;
 use App\Http\Livewire\Posts\PostsTag;
@@ -17,16 +19,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// })->name('home');
 
-Route::get('/blog', function () {
-    return view('blog');
-});
+Route::get('/', Home::class)->name('home');
 
+Route::get('/blog', Posts::class)->name('blog');
 Route::get('/blog/{post}', ShowPost::class)->name('post.show');
-
 Route::get('/blog/category/{category}', PostsCategory::class)->name('posts.category');
 Route::get('/blog/tag/{tag}', PostsTag::class)->name('posts.tag');
 

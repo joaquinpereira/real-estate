@@ -1,10 +1,3 @@
-@extends('layouts.front')
-
-@section('header')
-    @include('layouts.partials.index.header')
-@endsection
-
-@section('content')
 <div>
 
     <!-- FEATURED PROPERTIES -->
@@ -16,7 +9,7 @@
     <!-- END RECENT PROPERTY -->
 
     <!-- MOST POPULAR PLACES -->
-    @include('layouts.partials.index.most_popular_places')
+    {{-- @include('layouts.partials.index.most_popular_places') --}}
     <!-- END MOST POPULAR PLACES -->
 
     <!-- ABOUT -->
@@ -53,6 +46,4 @@
     <!-- BLOG -->
     @include('layouts.partials.index.recent_posts')
     <!-- END BLOG -->
-
 </div>
-@endsection

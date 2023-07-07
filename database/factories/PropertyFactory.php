@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\CategoryProperty;
 use App\Models\City;
+use App\Models\PropertyStatus;
 use App\Models\PropertyType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -22,25 +23,17 @@ class PropertyFactory extends Factory
     {
         return [
             'uuid' => fake()->uuid(),
-            'user_id' => function(){
-                return User::factory()->create();
-            },
-            'category_id' => function(){
-                return CategoryProperty::factory()->create();
-            },
-            'city_id' => function(){
-                return City::factory()->create();
-            },
-            'property_type_id' => function(){
-                return PropertyType::factory()->create();
-            },
-            'property_statuses_id' => function(){
-                return City::factory()->create();
-            },
+            'user_id' => User::factory(),
+            'category_id' => CategoryProperty::factory(),
+            'city_id' => City::factory(),
+            'property_type_id' => PropertyType::factory(),
+            'property_status_id' => PropertyStatus::factory(),
             'title' => fake()->sentence(6, true),
             'slug' => fake()->slug(),
+            'poster' => 'https://picsum.photos/1080/768?random=1',
             'address' => fake()->sentence(15, true),
             'description' => fake()->paragraph(30, true),
+            'featured_Property' => fake()->boolean(),
             'property_size' => fake()->numberBetween($min = 40, $max = 4500) . ' km2',
             'price' => fake()->numberBetween(1500, 350000),
             'status' => fake()->randomElement(['Pending', 'Pause', 'Active', 'Closed']),

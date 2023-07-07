@@ -18,6 +18,7 @@ use App\Models\PropertyType;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -38,11 +39,11 @@ class DatabaseSeeder extends Seeder
 
         $this->createPosts($user);
 
-        CategoryProperty::factory(10)->create();
+        $this->call(CategoryPropertySeeder::class);
         City::factory(20)->create();
-        PropertyType::factory(10)->create();
-        PropertyStatus::factory(10)->create();
-        Feature::factory(30)->create();
+        $this->call(PropertyTypeSeeder::class);
+        $this->call(PropertyStatusSeeder::class);
+        $this->call(FeatureSeeder::class);
 
         $this->createProperties($user);
     }
@@ -85,16 +86,16 @@ class DatabaseSeeder extends Seeder
     {
         Property::factory(1)->create([
             'user_id' => $user_id,
-            'category_id' => rand(1, 10),
+            'category_id' => rand(1, 6),
             'city_id' => rand(1, 10),
-            'property_type_id' => rand(1, 10),
-            'property_statuses_id' => rand(1, 10),
+            'property_type_id' => rand(1, 4),
+            'property_status_id' => rand(1, 2),
         ])->each(function($property) use ($user_id){
-            $n = rand(1,3);
+            $n = rand(1,3); $features = array();
             for($i=0; $i < $n; $i++){
-                $features = rand(1, 30);
-                $property->features()->attach($features);
+                $features[] = rand(1, 9);
             }
+            $property->features()->sync($features);
 
             Nearby::factory(4)->create([
                 'property_id' => $property->id
@@ -110,4 +111,5 @@ class DatabaseSeeder extends Seeder
             ]);
         });
     }
+
 }

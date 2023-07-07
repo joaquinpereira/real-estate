@@ -18,9 +18,11 @@ return new class extends Migration
             $table->foreignId('category_id')->references('id')->on('category_properties')->constrained();
             $table->foreignId('city_id')->references('id')->on('cities')->constrained();
             $table->foreignId('property_type_id')->references('id')->on('property_types')->constrained();
-            $table->foreignId('property_statuses_id')->references('id')->on('property_statuses')->constrained();
+            $table->foreignId('property_status_id')->references('id')->on('property_statuses')->constrained();
             $table->string('title', 2048);
+            $table->string('poster', 2048);
             $table->string('slug', 2048);
+            $table->boolean('featured_Property');
             $table->text('address');
             $table->text('location')->nullable();
             $table->text('description');
