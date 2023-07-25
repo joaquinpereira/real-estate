@@ -8,6 +8,8 @@ use App\Http\Livewire\Posts\PostsCategory;
 use App\Http\Livewire\Posts\PostsTag;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Livewire\Property\Show;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +31,8 @@ Route::get('/blog', Posts::class)->name('blog');
 Route::get('/blog/{post}', ShowPost::class)->name('post.show');
 Route::get('/blog/category/{category}', PostsCategory::class)->name('posts.category');
 Route::get('/blog/tag/{tag}', PostsTag::class)->name('posts.tag');
+
+Route::get('/properties/{property}', Show::class)->name('property.show');
 
 
 Route::get('/dashboard', function () {

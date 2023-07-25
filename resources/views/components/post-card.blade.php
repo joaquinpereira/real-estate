@@ -8,7 +8,7 @@
             {{ optional($post->published_at)->format('M d, Y') }}
         </span>
         <h6 class="text-capitalize">
-            <a href="blog-single.html">{{ Str::of($post->title)->limit(25, '...') }}</a>
+            <a href="{{ route('post.show', $post)}}">{{ Str::of($post->title)->limit(25, '...') }}</a>
         </h6>
         <p class=" mb-0">
             {{ Str::of($post->summary)->limit(60, '...') }}

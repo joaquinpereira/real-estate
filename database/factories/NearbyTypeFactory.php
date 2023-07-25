@@ -2,14 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\NearbyType;
-use App\Models\Property;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Nearby>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\NearbyType>
  */
-class NearbyFactory extends Factory
+class NearbyTypeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +17,7 @@ class NearbyFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'=> fake()->word(),
-            'location'=> fake()->word(),
+            'name' => fake()->word()
         ];
     }
 }

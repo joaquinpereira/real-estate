@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('property_type_id')->references('id')->on('property_types')->constrained();
             $table->foreignId('property_status_id')->references('id')->on('property_statuses')->constrained();
             $table->string('title', 2048);
-            $table->string('poster', 2048);
+            $table->string('poster', 2048)->nullable();
             $table->string('slug', 2048);
             $table->boolean('featured_Property');
             $table->text('address');

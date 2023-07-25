@@ -1,4 +1,7 @@
 <div>
+    @section('header')
+        @include('layouts.partials.index.header')
+    @endsection
 
     <!-- FEATURED PROPERTIES -->
     @include('layouts.partials.index.featured_property')

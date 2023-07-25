@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nearbies', function (Blueprint $table) {
+        Schema::create('nearby_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('property_id')->references('id')->on('properties')->constrained();
-            $table->foreignId('nearby_type_id')->references('id')->on('nearby_types')->constrained();
-            $table->string('title', 2048);
-            $table->text('location')->nullable();
+            $table->string('name');
+            $table->string('tag_title')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nearbies');
+        Schema::dropIfExists('nearby_types');
     }
 };

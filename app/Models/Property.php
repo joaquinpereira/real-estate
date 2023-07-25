@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,7 +29,8 @@ class Property extends Model
         'bathrooms',
         'year_built',
         'garage',
-        'garage_size'
+        'garage_size',
+        'location'
     ];
 
     public function getRouteKeyName(){
@@ -46,6 +46,11 @@ class Property extends Model
         return $this->belongsTo(PropertyType::class, 'property_type_id');
     }
 
+    public function propertyStatus()
+    {
+        return $this->belongsTo(PropertyStatus::class, 'property_status_id');
+    }
+
     public function agent()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -56,10 +61,15 @@ class Property extends Model
         return $this->belongsTo(CategoryProperty::class, 'category_id');
     }
 
-    // public function FunctionName()
-    // {
-    //     # code...
-    // }
+    public function files()
+    {
+        return $this->hasMany(FilesProperty::class);
+    }
+
+    public function nearbyPlaces()
+    {
+        return $this->hasMany(Nearby::class);
+    }
 
     public function scopePropertiesActive($query){
         return $query->where('status','=','Active')
@@ -79,7 +89,20 @@ class Property extends Model
             \NumberFormatter::CURRENCY
         );
 
-        echo $currency->format($this->attributes['price']);
+        return $currency->format($this->attributes['price']);
+    }
+
+    public function getPhotosAttribute()
+    {
+        return array_merge(
+            [$this->poster],
+            $this->files()->where('type', '=', 'image')->get()->pluck('url')->toArray()
+        );
+    }
+
+    public function getVideosAttribute()
+    {
+        return $this->files()->where('type', '=', 'video')->get()->pluck('url')->toArray();
     }
 }
 
