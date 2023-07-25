@@ -91,24 +91,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-8 text-center">
                         <h2 class="text-capitalize text-white">blog</h2>
-                        <ul class="list-inline ">
-                            <li class="list-inline-item">
-                                <a href="#" class="text-white">
-                                    home
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" class="text-white">
-                                    page
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" class="text-white">
-                                    blog
-                                </a>
-                            </li>
-
-                        </ul>
+                        @stack('breadcrumbs')
                     </div>
                 </div>
             </div>

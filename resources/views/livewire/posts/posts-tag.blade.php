@@ -10,3 +10,7 @@
 
     </div>
 </div>
+
+@push('breadcrumbs')
+    {{ Breadcrumbs::render('posts.tag', $tag) }}
+@endpush

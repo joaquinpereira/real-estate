@@ -7,3 +7,7 @@
         </div>
     </div>
 </div>
+
+@push('breadcrumbs')
+    {{ Breadcrumbs::render('blog') }}
+@endpush
