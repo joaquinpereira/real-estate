@@ -20,7 +20,7 @@ class Show extends Component
         return view('livewire.property.show',[
                 'featured_properties' => Property::feturedProperties()->take(10)->get(),
             ])
-            ->extends('layouts.front')
+            ->extends('layouts.properties')
             ->section('content');
     }
 }

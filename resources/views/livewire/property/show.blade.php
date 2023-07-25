@@ -1,8 +1,4 @@
 <div>
-    @section('header')
-        @include('layouts.partials.properties.header-single-property')
-    @endsection
-
     <!-- SINGLE DETAIL -->
     <section class="single__Detail">
         <div class="container">
@@ -251,3 +247,7 @@
     </section>
     <!-- END SINGLE DETAIL -->
 </div>
+
+@push('breadcrumbs_property')
+    {{ Breadcrumbs::render('property.show', $property) }}
+@endpush

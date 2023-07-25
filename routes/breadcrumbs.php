@@ -5,6 +5,7 @@
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Property;
 use App\Models\Tag;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
@@ -39,4 +40,16 @@ Breadcrumbs::for('posts.category', function (BreadcrumbTrail $trail, Category $c
 Breadcrumbs::for('posts.tag', function (BreadcrumbTrail $trail, Tag $tag) {
     $trail->parent('blog');
     $trail->push("Tag: {$tag->title}", route('posts.tag', $tag));
+});
+
+// Home > Properties
+Breadcrumbs::for('property.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push("Properties", route('property.index'));
+});
+
+// Home > Properties > property
+Breadcrumbs::for('property.show', function (BreadcrumbTrail $trail, Property $property) {
+    $trail->parent('property.index');
+    $trail->push("Property: {$property->title}", route('property.show', $property));
 });
