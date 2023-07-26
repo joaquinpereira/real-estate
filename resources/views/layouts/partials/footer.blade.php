@@ -20,7 +20,7 @@
                             <li> <b><i class="fa fa-phone-square"></i></b><span>(123) 345-6789</span> </li>
                             <li> <b><i class="fa fa-phone-square"></i></b><span>(+100) 123 456 7890</span> </li>
                             <li> <b><i class="fa fa-headphones"></i></b><span>support@realvilla.demo</span> </li>
-                            <li> <b><i class="fa fa-clock-o"></i></b><span>Mon - Sun / 9:00AM - 8:00PM</span> </li>
+                            <li> <b><i class="fa fa-clock-o"></i></b><span>{{Carbon\Carbon::now()->format('l, F d, Y h:i:s A')}}</span> </li>
                         </ul>
                     </div>
 
