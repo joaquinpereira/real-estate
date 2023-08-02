@@ -4,16 +4,19 @@
             @if ($property->featured_Property)
                 <div class="ribbon text-capitalize">featured</div>
             @endif
-            <img src="{{$property->poster}}" alt="{{$property->title}}" class="img-fluid w100 img-transition">
+            <a href="{{ route('property.show', $property) }}">
+                <img src="{{$property->poster}}" alt="{{$property->title}}" class="img-fluid w100 img-transition">
+            </a>
             <div class="info"> {{ $property->type->name }}</div>
         </div>
         <div class="card__image-body">
-            <span class="badge badge-primary text-capitalize mb-2">{{$property->category->name}}</span>
+            <span class="badge badge-primary text-capitalize mb-2">{{$property->propertyStatus->name}}</span>
+            <span class="badge badge-secondary text-capitalize mb-2">{{$property->category->name}}</span>
             <a href="{{ route('property.show', $property)}}">
-            <h6 class="text-capitalize">
-                {{Str::of($property->title)->limit(50, '...')}}
-            </h6>
-        </a>
+                <h6 class="text-capitalize">
+                    {{Str::of($property->title)->limit(50, '...')}}
+                </h6>
+            </a>
             <p class="text-capitalize">
                 <i class="fa fa-map-marker"></i>
                 {{Str::of($property->address)->limit(50, '...')}}

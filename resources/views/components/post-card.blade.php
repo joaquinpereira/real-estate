@@ -1,7 +1,8 @@
 <div class="card__image">
     <div class="card__image-header h-250">
-        <img src="{{ $post->poster }}" alt="{{ $post->title }}" class="img-fluid w100 img-transition">
-        {{-- <div class="info"> event</div> --}}
+        <a href="{{ route('post.show', $post) }}">
+            <img src="{{ $post->poster }}" alt="{{ $post->title }}" class="img-fluid w100 img-transition">
+        </a>
     </div>
     <div class="card__image-body">
         <span class="badge badge-secondary p-1 text-capitalize mb-3">

@@ -2,249 +2,63 @@
 <div class="products__filter mb-30">
     <div class="products__filter__group">
         <div class="products__filter__header">
-
             <h5 class="text-center text-capitalize">property filter</h5>
         </div>
+        <div class="widget__sidebar mt-0">
+            <div class="widget__sidebar__header">
+                <h6 class="text-capitalize">search</h6>
+            </div>
+            <div class="widget__sidebar__body">
+                <div class="input-group">
+                    <input type="text" name="search_term_string" class="form-control"
+                            placeholder="Search" wire:model.debounce="searchTerm">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn-search btn"><i
+                                class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
         <div class="products__filter__body">
             <div class="form-group">
 
-                <select class="wide select_option">
-                    <option data-display="Property Status">Property Status</option>
-                    <option>For Sale</option>
-                    <option>For Rent</option>
-
+                <select class="form-control" wire:model='status'>
+                    <option data-display="Property Status" value="{{null}}">Property Status</option>
+                    @foreach ($statuses as $status)
+                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <select class="wide select_option">
-                    <option data-display="Property Type">Property Type</option>
-                    <option>Residential</option>
-                    <option>Commercial</option>
-                    <option>Land</option>
-                    <option>Luxury</option>
+                <select class="form-control" wire:model='type' >
+                    <option data-display="Property Type" value="{{null}}">Property Type</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <select class="wide select_option">
-                    <option data-display="Area From">Area From </option>
-                    <option>1500</option>
-                    <option>1200</option>
-                    <option>900</option>
-                    <option>600</option>
-                    <option>300</option>
-                    <option>100</option>
+                <select class="form-control" wire:model='category' >
+                    <option data-display="Property Category" value="{{null}}">Property Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <select class="wide select_option">
-                    <option data-display="Locations">Locations</option>
-                    <option>United Kingdom</option>
-                    <option>American Samoa</option>
-                    <option>Belgium</option>
-                    <option>Canada</option>
-                    <option>Delaware</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <select class="wide select_option">
-                    <option data-display="Bedrooms">Bedrooms</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <div class="form-group">
-                    <select class="wide select_option">
-                        <option data-display="Bathrooms">Bathrooms</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="mb-3">Price range</label>
-                <div class="filter__price">
-                    <input class="price-range" type="text" name="my_range" value="" />
-                </div>
-            </div>
-
-            <div class="form-group mb-0 mt-2">
-
-                <a class="btn btn-outline-primary btn-block text-capitalize advanced-filter"
-                    data-toggle="collapse" href="#multiCollapseExample1"
-                    aria-controls="multiCollapseExample1"><i class="fa fa-plus-circle"></i> advanced
-                    filter
-                </a>
-
-                <div class="collapse multi-collapse" id="multiCollapseExample1">
-                    <div class="advancedfilter">
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox2" type="checkbox">
-                            <label for="checkbox2" class="label-brand text-capitalize">
-                                Air Conditioning
-                            </label>
-
-                        </div>
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox3" type="checkbox">
-                            <label for="checkbox3" class="label-brand text-capitalize">
-                                Swiming Pool
-                            </label>
-
-                        </div>
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox4" type="checkbox">
-                            <label for="checkbox4" class="label-brand text-capitalize">
-                                Central Heating
-                            </label>
-
-                        </div>
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox5" type="checkbox">
-                            <label for="checkbox5" class="label-brand text-capitalize">
-                                Spa & Massage
-                            </label>
-
-                        </div>
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox6" type="checkbox">
-                            <label for="checkbox6" class="label-brand text-capitalize">
-                                Pets Allow
-                            </label>
-
-                        </div>
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox7" type="checkbox">
-                            <label for="checkbox7" class="label-brand text-capitalize">
-                                Air Conditioning
-                            </label>
-
-                        </div>
-
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox8" type="checkbox">
-                            <label for="checkbox8" class="label-brand text-capitalize">
-                                Gym
-                            </label>
-
-                        </div>
-
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox9" type="checkbox">
-                            <label for="checkbox9" class="label-brand text-capitalize">
-                                Alarm
-                            </label>
-
-                        </div>
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox10" type="checkbox">
-                            <label for="checkbox10" class="label-brand text-capitalize">
-                                Window Covering
-                            </label>
-
-                        </div>
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox11" type="checkbox">
-                            <label for="checkbox11" class="label-brand text-capitalize">
-                                Free WiFi
-                            </label>
-
-                        </div>
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox12" type="checkbox">
-                            <label for="checkbox12" class="label-brand text-capitalize">
-                                Car Parking
-                            </label>
-                        </div>
+                @foreach ($features as $feature)
+                    <div class="form-check">
+                        <input class="form-check-input" name="propertyFeatures[]" value="{{$feature->id}}" type="checkbox" wire:model="propertyFeatures">
+                        <label class="form-check-label" for="checkbox2" >
+                            {{ $feature->name }}
+                        </label>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="products__filter__footer">
-            <div class="form-group mb-0">
-                <button class="btn btn-primary text-capitalize btn-block"><i
-                        class="fa fa-search ml-1"></i> search
-                    property </button>
-
+                @endforeach
             </div>
         </div>
     </div>
-
 </div>
 <!-- END FORM FILTER -->
-<!-- FORM FILTER -->
-<div class="products__filter mb-30">
-    <div class="products__filter__group">
-        <div class="products__filter__header">
-
-            <h5 class="text-center text-capitalize">simulation calculator </h5>
-        </div>
-        <div class="products__filter__body">
-            <div class="form-group">
-                <label>Sale Price</label>
-
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">$</span>
-
-                    </div>
-                    <input type="text" class="form-control" placeholder="$130.000">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Down Payment</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">$</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="$6.000">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Long Term (Years)</label>
-                <select class="select_option wide">
-
-                    <option value="1">10</option>
-                    <option value="2">15</option>
-                    <option value="3">20</option>
-                    <option value="4">25</option>
-                </select>
-
-            </div>
-
-            <div class="form-group">
-                <label>Interest Rate</label>
-
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">%</span>
-
-                    </div>
-                    <input type="text" class="form-control" placeholder="10%">
-                </div>
-            </div>
-        </div>
-        <div class="products__filter__footer">
-            <div class="form-group mb-0">
-                <button class="btn btn-primary text-capitalize btn-block"> calculate
-                    <i class="fa fa-calculator ml-1"></i>
-                </button>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- END FORM FILTER -->
 <div class="sticky-top">
@@ -301,16 +115,4 @@
 
     </div>
     <!-- END PROFILE AGENT -->
-    <div class="download mb-0">
-        <h5 class="text-center text-capitalize">Property Attachments</h5>
-        <div class="download__item">
-            <a href="#" target="_blank"><i class="fa fa-file-pdf-o mr-3"
-                    aria-hidden="true"></i>Download Document.Pdf</a>
-        </div>
-        <div class="download__item">
-            <a href="#" target="_blank"><i class="fa fa-file-word-o mr-3"
-                    aria-hidden="true"></i>Presentation
-                2016-17.Doc</a>
-        </div>
-    </div>
 </div>

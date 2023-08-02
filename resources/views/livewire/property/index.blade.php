@@ -8,7 +8,11 @@
                             <x-property-card :property="$property"></x-property-card>
                         </div>
                     @empty
-                        <div></div>
+                        <div>
+                            <h6 class="text-capitalize">
+                                No properties available
+                            </h6>
+                        </div>
                     @endforelse
                 </div>
             </div>

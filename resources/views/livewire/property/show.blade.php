@@ -3,7 +3,7 @@
     <section class="single__Detail">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
 
                     <!-- PHOTOS -->
                     @if (count($property->photos) > 1)
@@ -17,7 +17,8 @@
                     <div class="row">
                         <div class="col-md-9 col-lg-9">
                             <div class="single__detail-title mt-4">
-                                <h3 class="text-capitalize">{{ $property->title }}</h3>
+                                <h3 class="text-capitalize">{{ $property->title }} - {{ $property->category->name }} </h3>
+                                <h5 class="text-capitalize">{{ $property->type->name }} - {{ $property->propertyStatus->name }}</h5>
                                 <p>{{ $property->address }}</p>
                             </div>
                         </div>
@@ -234,9 +235,6 @@
                         </div>
                     </div>
                     <!-- END DESCRIPTION -->
-                </div>
-                <div class="col-lg-4">
-                    @include('layouts.partials.properties.side-bar')
                 </div>
             </div>
 

@@ -33,7 +33,6 @@ Route::get('/blog/tag/{tag}', PostsTag::class)->name('posts.tag');
 Route::get('/properties', PropertyIndex::class)->name('property.index');
 Route::get('/properties/{property}', PropertyShow::class)->name('property.show');
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
