@@ -8,32 +8,29 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Index extends Component
+class Show extends Component
 {
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
 
-    public $searchTerm;
-    public $showSearchInput = true;
+    public $showSearchInput = false;
+
+    public $agent;
+
+    public function mount(User $agent)
+    {
+        $this->agent = $agent;
+    }
 
     public function render()
     {
-        $searchTerm = '%'.$this->searchTerm.'%';
-
-        return view('livewire.agents.index', [
-                'agents' => User::role('super-admin')
-                    ->where('name', 'like', $searchTerm)
-                    ->paginate(5),
+        return view('livewire.agents.show',[
+                'properties' => Property::propertiesActive()->where('user_id', $this->agent->id)->paginate(10),
                 'recent_posts' => Post::published()->latest()->take(5)->get(),
                 'recent_properties' => Property::propertiesActive()->latest()->take(5)->get(),
             ])
             ->extends('layouts.properties')
             ->section('content');
-    }
-
-    public function updatedSearchTerm()
-    {
-        $this->resetPage();
     }
 }

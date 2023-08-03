@@ -12,6 +12,7 @@ use App\Http\Livewire\Property\Index as PropertyIndex;
 use App\Http\Livewire\Property\Show as PropertyShow;
 
 use App\Http\Livewire\Agents\Index as AgentsIndex;
+use App\Http\Livewire\Agents\Show as AgentShow;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::get('/properties', PropertyIndex::class)->name('property.index');
 Route::get('/properties/{property}', PropertyShow::class)->name('property.show');
 
 Route::get('/agents', AgentsIndex::class)->name('agent.index');
+Route::get('/agents/{agent}', AgentShow::class)->name('agent.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

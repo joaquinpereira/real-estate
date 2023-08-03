@@ -3,7 +3,7 @@
 <div class="col-lg-12 cards">
     <div class="row">
         <div class="col-md-6 col-lg-6">
-            <a href="#" class="profile__agents-avatar">
+            <a href="{{ route('agent.show', $agent) }}" class="profile__agents-avatar">
                 <img src="{{ $agent->profile_picture }}" alt="{{ $agent->name }}" class="img-fluid ">
                 <div class="total__property-agent">{{ $agent->propertiesPublished }}</div>
             </a>
@@ -11,9 +11,10 @@
         <div class="col-md-6 col-lg-6 my-auto">
             <div class="profile__agents-info">
                 <h5 class="text-capitalize mb-0">
-                    <a href="#" target="_blank">{{ $agent->name }}</a>
+                    <a href="{{ route('agent.show', $agent) }}" target="_blank">{{ $agent->name }}</a>
                 </h5>
                 <p class="text-capitalize mb-1">property agent</p>
+                <p>{{ $agent->about }}</p>
 
                 <ul class="list-unstyled mt-2">
                     <li>
@@ -28,25 +29,16 @@
                     </li>
                 </ul>
                 <p class="mb-0 mt-3">
-                    <button class="btn btn-social btn-social-o facebook mr-1">
-                        <i class="fa fa-facebook-f"></i>
-                    </button>
-                    <button class="btn btn-social btn-social-o twitter mr-1">
-                        <i class="fa fa-twitter"></i>
-                    </button>
+                    <x-social-btn :url="$agent->facebook_url" :social_network="'facebook'" />
 
-                    <button class="btn btn-social btn-social-o linkedin mr-1">
-                        <i class="fa fa-linkedin"></i>
-                    </button>
-                    <button class="btn btn-social btn-social-o instagram mr-1">
-                        <i class="fa fa-instagram"></i>
-                    </button>
+                    <x-social-btn :url="$agent->twitter_url" :social_network="'twitter'" />
 
-                    <button class="btn btn-social btn-social-o youtube mr-1">
-                        <i class="fa fa-youtube"></i>
-                    </button>
+                    <x-social-btn :url="$agent->linkedin_url" :social_network="'linkedin'" />
+
+                    <x-social-btn :url="$agent->instagram_url" :social_network="'instagram'" />
+
+                    <x-social-btn :url="$agent->youtube_url" :social_network="'youtube'" />
                 </p>
-
             </div>
         </div>
     </div>

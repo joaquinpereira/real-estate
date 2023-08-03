@@ -60,3 +60,9 @@ Breadcrumbs::for('agent.index', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push("Agents", route('agent.index'));
 });
+
+// Home > Agents > agent
+Breadcrumbs::for('agent.show', function (BreadcrumbTrail $trail, User $agent) {
+    $trail->parent('agent.index');
+    $trail->push("Agent: {$agent->name}", route('agent.show', $agent));
+});
