@@ -31,4 +31,9 @@ class Posts extends Component
         ->section('content');
     }
 
+    public function updatedSearchTerm()
+    {
+        $this->resetPage();
+    }
+
 }

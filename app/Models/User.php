@@ -96,4 +96,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
+
+    public function getPropertiesPublishedAttribute()
+    {
+        return $this->properties()->where('status', '=', 'Active')->count().' properties';
+    }
 }

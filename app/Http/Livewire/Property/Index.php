@@ -53,6 +53,10 @@ class Index extends Component
     {
         $this->resetPage();
     }
+    public function updatedSearchTerm()
+    {
+        $this->resetPage();
+    }
     public function updatedPropertyFeatures()
     {
         $this->resetPage();

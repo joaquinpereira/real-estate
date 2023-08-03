@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Property;
 use App\Models\Tag;
+use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
 // This import is also not required, and you could replace `BreadcrumbTrail $trail`
@@ -52,4 +53,10 @@ Breadcrumbs::for('property.index', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('property.show', function (BreadcrumbTrail $trail, Property $property) {
     $trail->parent('property.index');
     $trail->push("Property: {$property->title}", route('property.show', $property));
+});
+
+// Home > Agents
+Breadcrumbs::for('agent.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push("Agents", route('agent.index'));
 });

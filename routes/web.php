@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Property\Index as PropertyIndex;
 use App\Http\Livewire\Property\Show as PropertyShow;
 
+use App\Http\Livewire\Agents\Index as AgentsIndex;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,8 @@ Route::get('/blog/tag/{tag}', PostsTag::class)->name('posts.tag');
 
 Route::get('/properties', PropertyIndex::class)->name('property.index');
 Route::get('/properties/{property}', PropertyShow::class)->name('property.show');
+
+Route::get('/agents', AgentsIndex::class)->name('agent.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
