@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use joaquinpereira\Pexels\Facades\Pexels;
+use Spatie\Permission\Models\Role;
+
 
 
 class UserSeeder extends Seeder
@@ -16,17 +18,22 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $photo = Pexels::image_search('person, user', 1, 20)['photos'];
-        User::factory()->create([
+        $admin = Role::findByName('super-admin');
+
+        $user = User::factory()->create([
             'name' => 'Joaquin Pereira',
             'email' => 'pereira.joaquin@gmail.com',
             'profile_picture' => $photo[0]->sizes->portrait
         ]);
+        $user->assignRole($admin);
 
         for($i=1; $i<=10; $i++)
         {
-            User::factory()->create([
+            $user = User::factory()->create([
                 'profile_picture' => $photo[$i]->sizes->portrait
             ]);
+            $user->assignRole($admin);
         }
     }
+
 }
