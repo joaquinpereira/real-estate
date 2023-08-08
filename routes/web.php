@@ -14,6 +14,10 @@ use App\Http\Livewire\Property\Show as PropertyShow;
 use App\Http\Livewire\Agents\Index as AgentsIndex;
 use App\Http\Livewire\Agents\Show as AgentShow;
 
+use App\Http\Livewire\Contact;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +42,8 @@ Route::get('/properties/{property}', PropertyShow::class)->name('property.show')
 
 Route::get('/agents', AgentsIndex::class)->name('agent.index');
 Route::get('/agents/{agent}', AgentShow::class)->name('agent.show');
+
+Route::get('/contact', Contact::class)->name('contact.form');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -23,7 +23,6 @@
             </p>
             <ul class="list-inline card__content">
                 <li class="list-inline-item">
-
                     <span>
                         baths <br>
                         <i class="fa fa-bath"></i> {{$property->bathrooms}}
@@ -45,22 +44,21 @@
         </div>
         <div class="card__image-footer">
             <figure>
-                <img src="{{ $property->agent->profile_picture }}" alt="" class="img-fluid rounded-circle">
+                <a href="{{ route('agent.show', $property->agent) }}">
+                    <img src="{{ $property->agent->profile_picture }}" alt="{{ $property->agent->name }}" class="img-fluid rounded-circle picture_profile">
+                </a>
             </figure>
             <ul class="list-inline my-auto">
                 <li class="list-inline-item">
-                    <a href="#">
+                    <a href="{{ route('agent.show', $property->agent) }}">
                         {{$property->agent->name}} <br>
                     </a>
-
                 </li>
-
             </ul>
             <ul class="list-inline my-auto ml-auto">
                 <li class="list-inline-item ">
                     <h6>{{$property->price}}</h6>
                 </li>
-
             </ul>
         </div>
     </div>

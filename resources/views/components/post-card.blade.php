@@ -17,11 +17,13 @@
     </div>
     <div class="card__image-footer">
         <figure>
-            <img src="{{ $post->user->profile_picture }}" alt="{{ $post->user->name }}" class="img-fluid rounded-circle">
+            <a href="{{ route('agent.show', $post->user) }}">
+                <img src="{{ $post->user->profile_picture }}" alt="{{ $post->user->name }}" class="img-fluid rounded-circle picture_profile">
+            </a>
         </figure>
         <ul class="list-inline my-auto">
             <li class="list-inline-item ">
-                <a href="#">
+                <a href="{{ route('agent.show', $post->user) }}">
                     {{ Str::of($post->user->name)->limit(15, '...') }}
                 </a>
             </li>

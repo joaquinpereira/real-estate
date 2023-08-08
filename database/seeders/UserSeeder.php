@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $photo = Pexels::image_search('person, user', 1, 20)['photos'];
+        $photo = Pexels::image_search('person, user', 1, 20, 'square', 'small')['photos'];
         $admin = Role::findByName('super-admin');
 
         $user = User::factory()->create([

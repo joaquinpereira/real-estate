@@ -28,7 +28,7 @@
     <link href="{{asset('assets/real_estate/css/stylesbd04.css?8918068d71def746395d')}}" rel="stylesheet">
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-
+    @vite(['resources/js/app.js'])
     @livewireStyles
 </head>
 

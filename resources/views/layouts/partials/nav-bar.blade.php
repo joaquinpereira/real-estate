@@ -8,5 +8,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('blog')}}" > Blog </a>
     </li>
-    <li class="nav-item"><a class="nav-link" href="contact.html"> contact </a></li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('contact.form') }}"> contact </a>
+    </li>
 </ul>
