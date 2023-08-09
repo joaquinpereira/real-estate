@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\CategoryProperty
@@ -28,9 +29,17 @@ class CategoryProperty extends Model
 {
     use HasFactory;
 
-    public function getRouteKeyName(){
+    protected $fillable = ['name', 'slug'];
+
+    public function getRouteKeyName()
+    {
         return 'slug';
     }
 
+    public function setNameAttribute($name)
+    {
+        $this->attributes['name'] = $name;
+        $this->attributes['slug'] = Str::slug($name);
+    }
 
 }

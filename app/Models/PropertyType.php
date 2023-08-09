@@ -28,6 +28,8 @@ class PropertyType extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function properties()
     {
         return $this->hasMany(Property::class);

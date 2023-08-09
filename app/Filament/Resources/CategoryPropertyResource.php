@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
-use App\Models\Category;
+use App\Filament\Resources\CategoryPropertyResource\Pages;
+use App\Filament\Resources\CategoryPropertyResource\RelationManagers;
+use App\Models\CategoryProperty;
 use Closure;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -15,19 +15,19 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
-class CategoryResource extends Resource
+class CategoryPropertyResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = CategoryProperty::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = 'Blog';
+    protected static ?string $navigationGroup = 'Properties';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
+                Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(2048)
                     ->reactive()
@@ -44,7 +44,7 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
             ])
@@ -63,7 +63,7 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageCategories::route('/'),
+            'index' => Pages\ManageCategoryProperties::route('/'),
         ];
     }
 }

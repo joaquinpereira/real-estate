@@ -25,4 +25,6 @@ use Illuminate\Database\Eloquent\Model;
 class PropertyStatus extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name'];
 }

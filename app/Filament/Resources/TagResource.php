@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
-use App\Models\Category;
-use Closure;
+use App\Filament\Resources\TagResource\Pages;
+use App\Filament\Resources\TagResource\RelationManagers;
+use App\Models\Tag;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,11 +12,12 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Closure;
 use Illuminate\Support\Str;
 
-class CategoryResource extends Resource
+class TagResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = Tag::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -29,8 +29,7 @@ class CategoryResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(2048)
-                    ->reactive()
+                    ->maxLength(2048)->reactive()
                     ->afterStateUpdated(function(Closure $set, $state){
                         $set('slug', Str::slug($state));
                     }),
@@ -63,7 +62,7 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageCategories::route('/'),
+            'index' => Pages\ManageTags::route('/'),
         ];
     }
 }
